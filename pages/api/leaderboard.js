@@ -69,4 +69,12 @@ export default async function handler(req, res) {
       {
         market: generateMarketQuestion(),
         amount: Math.floor(Math.random() * 4000) + 1500,
-        outcome: Math.
+        outcome: Math.random() > 0.5 ? 'Yes' : 'No',
+        timestamp: Date.now() - Math.random() * 86400000 * 7,
+      }
+    ],
+  })).sort((a, b) => b.volume - a.volume);
+
+  // Return mock data
+  res.status(200).json(mockData);
+}
